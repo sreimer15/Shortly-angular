@@ -73,11 +73,15 @@ module.exports = {
 
   navToLink: function (req, res, next) {
     var link = req.navLink;
+    console.log(link, 'in navToLink');
     link.visits++;
     link.save(function (err, savedLink) {
       if (err) {
         next(err);
       } else {
+        console.log(savedLink, ' in save function')
+        res.set('Access-Control-Allow-Credentials', '*');
+        console.log(res.headers)
         res.redirect(savedLink.url);
       }
     });

@@ -1,8 +1,10 @@
 <div id='signup'>
   <h1>signup</h1>
   <form name="signupForm" ng-submit='signup()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
+    <input type='text' ng-model='user.username' name='usernameField' required ng-minLength='6' ng-maxLength='25' ng-pattern='/[A-Za-z]+/'>
+    <p ng-if='signupForm.usernameField.$invalid && !signupForm.usernameField.$pristine '>Username invalid</p>
+    <input type="password" ng-model='user.password' name='passwordField' required ng-minLength='6' ng-maxLength='25'>
+    <p ng-if='signinForm.passwordField.$invalid && !signinForm.passwordField.$pristine '>Password invalid</p>
     <button>signup</button>
   </form>
   <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>

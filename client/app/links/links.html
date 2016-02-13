@@ -1,3 +1,26 @@
-<div id='container'>
-  <!-- Your html here -->
+<div id='container' ng-controller='LinksController'>
+ <input placeholder='input link here' ng-model='search'>
+ </input>
+ <table>  
+  <tr ng-repeat='link in data.links | orderBy: "-visits" | filter: search' class='link'>
+    <td>
+      <img src="../../assets/redirect_icon.png">
+    </td>
+    <td>
+    <a href="/api/links/{{ link.code }}">
+      <ul>
+        <li class='title'>{{link.title}}</li>
+        <li class='original'>{{link.url}}</li>
+        <li>{{link.base_url + '/' + link.code}}</li>
+      </ul>
+    </td>
+    </a>
+  <td class='visits'>
+    <p class='count'>{{link.visits}} Visits</p>
+  </td>
+ </tr>
+ <pre>
+ </table>
+   {{data.links | json}}
+ </pre>
 </div>

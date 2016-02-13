@@ -1,6 +1,7 @@
 var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js'); // our custom middleware
+    
 
 
 module.exports = function (app, express) {
@@ -21,6 +22,8 @@ module.exports = function (app, express) {
   app.use('/api/links', linkRouter); // user link router for link request
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
+
+
 
   // inject our routers into their respective route files
   require('../users/userRoutes.js')(userRouter);
